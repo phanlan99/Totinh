@@ -25,7 +25,7 @@ const pleadMessages = [
 noBtn.addEventListener("click", () => {
   noClickCount++;
 
-  if (noClickCount > 2) {
+  if (noClickCount > 1) {
     // Xóa giao diện cũ và thêm ảnh nền full
     body.innerHTML = `
     <img src="gifma.gif" alt="pleaseee" class="fullscreen-gif" />
