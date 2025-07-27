@@ -1,6 +1,9 @@
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
 const title = document.getElementById("title");
+const body = document.body;
+
+let noClickCount = 0;
 
 const pleadMessages = [
   "Năn nỉ đó",
@@ -20,12 +23,49 @@ const pleadMessages = [
 ];
 
 noBtn.addEventListener("click", () => {
-  // Tăng gấp đôi kích thước nút "Có"
+  noClickCount++;
+
+  if (noClickCount > 2) {
+    // Xóa giao diện cũ và thêm ảnh nền full
+    body.innerHTML = `
+    <img src="gifma.gif" alt="pleaseee" class="fullscreen-gif" />
+  `;
+
+    // Tạo phần tử audio bằng JS sau khi người dùng click
+    const audio = new Audio("ma.mp3");
+    audio.loop = true;
+    audio.play().catch((e) => {
+      console.log("Trình duyệt chặn autoplay: ", e);
+    });
+
+    // CSS để ảnh gif full màn hình
+    const style = document.createElement("style");
+    style.textContent = `
+    .fullscreen-gif {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 9999;
+    }
+    body {
+      margin: 0;
+      background-color: black;
+    }
+  `;
+    document.head.appendChild(style);
+
+    return;
+  }
+
+
+  // Tăng kích thước nút "Có"
   const currentFontSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
   const currentPadding = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
 
-  yesBtn.style.fontSize = currentFontSize * 2 + "px";
-  yesBtn.style.padding = currentPadding * 2 + "px " + currentPadding * 4 + "px";
+  yesBtn.style.fontSize = currentFontSize * 1.5 + "px";
+  yesBtn.style.padding = currentPadding * 1.5 + "px " + currentPadding * 2 + "px";
 
   // Đổi nội dung h1 thành câu ngẫu nhiên
   const randomMsg = pleadMessages[Math.floor(Math.random() * pleadMessages.length)];
@@ -35,7 +75,7 @@ noBtn.addEventListener("click", () => {
 yesBtn.addEventListener("click", () => {
   title.textContent = "Biết ngay mà, I LOVE YOU ❤️";
 
-  // Khôi phục kích thước nút "Có" giống với nút "Không"
+  // Khôi phục kích thước nút "Có"
   const noFontSize = window.getComputedStyle(noBtn).fontSize;
   const noPadding = window.getComputedStyle(noBtn).padding;
 
