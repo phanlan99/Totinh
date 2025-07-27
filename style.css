@@ -1,0 +1,59 @@
+/* Font Google (nếu muốn thêm sau) */
+/* @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom right, #ffe6e6, #ffccff);
+  animation: backgroundFade 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundFade {
+  0% {
+    background: linear-gradient(to bottom right, #ffe6e6, #ffccff);
+  }
+  100% {
+    background: linear-gradient(to bottom right, #ffd1dc, #ffe4e1);
+  }
+}
+
+#container {
+  text-align: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+h1 {
+  color: #e91e63;
+  font-size: 2em;
+  margin-bottom: 30px;
+  /* font-family: 'Pacifico', cursive; */ /* Bật dòng này nếu import font */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s, font-size 0.3s, background-color 0.3s;
+}
+
+#yes {
+  background-color: #4caf50;
+  color: white;
+}
+
+#no {
+  background-color: #f44336;
+  color: white;
+}
